@@ -1,3 +1,4 @@
+
 // Materi: Controlled Form (useState, value, onChange, onSubmit)
 
 import { useState } from "react";
@@ -11,10 +12,16 @@ import { useState } from "react";
 
 function FormSiswa() {
   // Lengkapi state untuk form di sini
+  const [nama, setNama] = useState("");
+  const [kelas, setKelas] = useState("");
+  const [dataSiswa, setDataSiswa] = useState(null);
 
   function handleSubmit(e) {
     e.preventDefault();
     // Lengkapi logika saat form disubmit di sini
+    setDataSiswa({ nama, kelas });
+    setNama("");
+    setKelas("");
   }
 
   return (
@@ -28,6 +35,8 @@ function FormSiswa() {
         <input
           type="text"
           placeholder="Masukkan nama siswa"
+          value={nama}
+          onChange={(e) => setNama(e.target.value)}
           className="w-full px-3 py-2 border border-gray-300 rounded-lg"
         />
       </div>
@@ -38,6 +47,8 @@ function FormSiswa() {
         <input
           type="text"
           placeholder="Contoh: XI B"
+          value={kelas}
+          onChange={(e) => setKelas(e.target.value)}
           className="w-full px-3 py-2 border border-gray-300 rounded-lg"
         />
       </div>
@@ -47,7 +58,12 @@ function FormSiswa() {
       </button>
 
       {/* Tampilkan preview nilai input / hasil submit di sini */}
-      <p className="text-sm text-gray-500">Preview data akan muncul di sini</p>
+      {dataSiswa && (
+        <div className="text-sm text-gray-700">
+          <p>Nama: {dataSiswa.nama}</p>
+          <p>Kelas: {dataSiswa.kelas}</p>
+        </div>
+      )}
     </form>
   );
 }
@@ -55,6 +71,7 @@ function FormSiswa() {
 export default FormSiswa;
 
 // 1. Apa yang dimaksud dengan Controlled Component / Controlled Form di React, dan apa peran atribut 'value' serta 'onChange'?
-//   Jawaban:
+//   Jawaban:input nya dicorntol ame react
+
 // 2. Mengapa kita perlu memanggil e.preventDefault() di dalam handler onSubmit pada form React?
-//   Jawaban:
+//   Jawaban:biar gak relod pas kerelod

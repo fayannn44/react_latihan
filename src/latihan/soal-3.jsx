@@ -12,12 +12,20 @@
 
 function DaftarSiswa() {
   const daftarSiswa = [
-    // Lengkapi minimal 3 data siswa di sini
+    { id: 1, nama: "Luthfian", kelas: "XI RPL" },
+    { id: 2, nama: "Andi", kelas: "XI TKJ" },
+    { id: 3, nama: "Budi", kelas: "XI RPL" },
   ];
 
   return (
     <>
       {/* Render daftarSiswa menggunakan .map() dan pasang key={siswa.id} pada elemen terluar tiap item */}
+      {daftarSiswa.map((siswa) => (
+        <section key={siswa.id} className="border p-4 rounded-lg mb-3">
+          <h3>{siswa.nama}</h3>
+          <p>{siswa.kelas}</p>
+        </section>
+      ))}
     </>
   );
 }
@@ -25,6 +33,7 @@ function DaftarSiswa() {
 export default DaftarSiswa;
 
 // 1. Mengapa props 'key' wajib dipasang pada elemen terluar di dalam .map() dan sebaiknya menggunakan ID unik?
-//   Jawaban:
+//   Jawaban: react nya bian tau kode unik wak
+
 // 2. Apa fungsi Fragment (<>...</>) saat merender elemen di dalam komponen dibandingkan membungkusnya dengan <div>?
-//   Jawaban:
+//   Jawaban: kelompokin lah gitu
